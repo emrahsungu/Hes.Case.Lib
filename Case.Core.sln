@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio 15
 VisualStudioVersion = 15.0.28307.421
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Case.Core", "Case.Core\Case.Core.csproj", "{06652D9A-9DEC-49DC-9401-C567788B94DE}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "CaseLib.Core", "Case.Core\CaseLib.Core.csproj", "{06652D9A-9DEC-49DC-9401-C567788B94DE}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ConsoleTester", "ConsoleTester\ConsoleTester.csproj", "{8FA36697-B00F-43F0-B726-16CF291E5280}"
 EndProject

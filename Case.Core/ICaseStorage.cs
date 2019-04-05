@@ -1,19 +1,19 @@
-﻿namespace Case.Core
-{
-    public interface ICaseStorage
-    {
+﻿using CaseLib.Core.Model;
+
+namespace CaseLib.Core {
+    public interface ICaseStorage {
+
         /// <summary>
-        /// 
         /// </summary>
         /// <param name="caseToAddToStorage"></param>
         /// <returns></returns>
-        bool AddCase(Case caseToAddToStorage);
+        OResult<bool> AddCase(Case caseToAddToStorage);
 
         /// <summary>
-        /// 
         /// </summary>
-        /// <param name="id"></param>
+        /// <param name="caseNumber"></param>
         /// <returns></returns>
-        Case GetCase(string id);
+        OResult<Case> GetCase(string caseNumber);
+
     }
 }
