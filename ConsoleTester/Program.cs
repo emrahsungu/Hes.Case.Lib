@@ -49,17 +49,44 @@ namespace ConsoleTester {
             }
             yield return "Closed";
         }
+
+
+        private static IEnumerable<string> Test() {
+            return Test1();
+        }
+
+        private static IEnumerable<string> Test1()
+        {
+            return Test2();
+        }
+
+
+        private static IEnumerable<string> zeitaku() {
+
+            yield break ;
+
+        }
+        private static IEnumerable<string> Test2()
+        {
+            return Array.Empty<string>();
+
+        
+            Array.Empty<int>();
+        }
         private static void Main(string[] args) {
+
             var authority = "https://login.microsoftonline.com/common/";
             var authenticationContext = new AuthenticationContext(authority, new TokenCache());
-            var result = authenticationContext.AcquireTokenAsync(
-                "",
-                "",
-                new Uri("https://casebuddy.microsoft.com"),
-                new PlatformParameters(PromptBehavior.Auto),
-                new UserIdentifier("",UserIdentifierType.OptionalDisplayableId)).Result;
 
-           
+            var result = authenticationContext.AcquireTokenAsync(
+                "https://api.support.microsoft.com",
+                "ad9a38dc-2fa5-4863-9557-4f9b4a23e44b",
+                new Uri("https://casebuddy.microsoft.com"),
+                new PlatformParameters(PromptBehavior.Always),
+                new UserIdentifier("hasungu@microsoft.com",UserIdentifierType.OptionalDisplayableId)).Result;
+
+            var x = authenticationContext.TokenCache.Serialize();
+            var str = Convert.ToBase64String(x);
 
             using (var client = new WebClient {
                 Headers = {
@@ -68,7 +95,7 @@ namespace ConsoleTester {
                     ["cache-control"] = "no-cache"
                 }
             }) {
-                var data = JsonConvert.SerializeObject(QueryMakeQuery(""));
+                var data = JsonConvert.SerializeObject(QueryMakeQuery("hasungu@microsoft.com"));
                 var response = client.UploadData("https://api.support.microsoft.com/v0/queryidresult", "POST", Encoding.UTF8.GetBytes(data));
                 var res = JsonConvert.DeserializeObject<Welcome>(Encoding.UTF8.GetString(response));
                 var tParam = res.TableParameters.Single();
